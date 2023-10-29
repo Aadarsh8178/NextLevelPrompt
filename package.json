@@ -1,0 +1,25 @@
+{
+  "name": "nextlevelprompt",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro check && astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/check": "^0.2.1",
+    "@astrojs/svelte": "^4.0.3",
+    "astro": "^3.4.0",
+    "chart.js": "^4.4.0",
+    "nanostores": "^0.9.4",
+    "pusher-js": "^8.3.0",
+    "svelte": "^4.2.2",
+    "typescript": "^5.2.2"
+  },
+  "devDependencies": {
+    "@types/chart.js": "^2.9.39"
+  }
+}
