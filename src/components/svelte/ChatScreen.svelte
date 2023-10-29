@@ -20,7 +20,7 @@
   <div class="flex-grow" />
   <div class="bottom-content" bind:this={chatWindowElement}>
     {#each chats as chat}
-      <div transition:fly={{ y: 40, duration: 400 }}>
+      <div transition:fly={{ y: 25, duration: 400 }}>
         {#if chat.isResponse}
           <Response response={chat} />
         {:else}

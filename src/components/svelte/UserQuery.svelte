@@ -34,6 +34,7 @@
   .query-text {
     margin: 0 16px;
     max-width: 600px;
+    font-size: 16px;
     color: var(--secondary-text-color);
   }
   .user-icon {

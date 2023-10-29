@@ -3,16 +3,6 @@
   import Chart from "chart.js/auto";
   export let response;
   let delayed;
-  let chartValues = response.data;
-  let chartLabels = [
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-  ];
   let ctx;
   let chartCanvas;
 
@@ -36,7 +26,7 @@
               context.mode === "default" &&
               !delayed
             ) {
-              delay = context.dataIndex * 300 + context.datasetIndex * 100;
+              delay = context.dataIndex * 100 + context.datasetIndex * 20;
             }
             return delay;
           },

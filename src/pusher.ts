@@ -1,5 +1,6 @@
 import Pusher, { Channel } from "pusher-js";
 import { addChat, responseLoading } from "./store/chat";
+import { getUserId } from "./user";
 
 var pusher: Pusher;
 var channel: Channel;
@@ -19,19 +20,20 @@ export function initPusher() {
 
   channel = pusher.subscribe("prompt-handler");
   channel.bind("message", function (data: any) {
-    console.log("message", data?.message);
+    const userId = getUserId();
+    if (data.userId !== userId) return;
     if (data.isCompleted) {
-      responseLoading.set(true);
+      responseLoading.set(false);
     }
     addChat({ text: data?.message || "", isResponse: true });
   });
 
-  // {"labels":["Alicia Borer Sr.","Carla Greenholt","Claudia Johns","Daryl Greenholt","Delbert Grady","Dennis Legros","Dr. Mabel Flatley","Hope Nienow","Ira Kassulke PhD","Janis Zulauf","Jan Pouros","Jean Thompson","Jo Christiansen","Jonathon Jacobs","Lynette Gutkowski","Omar Collins","Roberta Ryan","Rochelle Hermann","Sherry Schuster","Warren Sauer"],"chartType":"bar","datasets":[{"label":"Number of Conversations","data":[5,8,11,12,12,12,8,10,12,10,12,10,11,9,10,7,17,14,11,13],"borderWidth":1}]}
   channel.bind("chart", function (data: any) {
+    const userId = getUserId();
+    if (data.userId !== userId) return;
     const message = data?.message || "";
-    console.log("chart", { message });
     if (data.isCompleted) {
-      responseLoading.set(true);
+      responseLoading.set(false);
     }
     const chartData = JSON.parse(message);
     const type = chartData.chartType;

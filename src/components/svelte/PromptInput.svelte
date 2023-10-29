@@ -10,7 +10,6 @@
     value = text as string;
   });
   function sendText() {
-    console.log("sending text,sendText", { value });
     if (!value) return;
     sendRequestAndAddChat({
       text: value,

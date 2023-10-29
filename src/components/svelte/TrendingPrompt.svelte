@@ -2,10 +2,9 @@
   import { sendRequestAndAddChat, responseLoading } from "../../store/chat";
   let disabled = false;
   const prompts = [
-    "how many conversations inserted this week group by agent in bar format?",
-    "how many conversations inserted this week group by day in bar format?",
-    "how many conversations inserted this week group by conversation tags in bar format?",
     "create alert on conversation tag legal threat and email it to divij@thelevel.ai",
+    "how many conversations inserted this week group by agent in bar format?",
+    "how many conversations inserted this week group by conversation tags in line format?",
     "I want an agent to be alerted if their QA score goes below 70% and send it to the agents emailId",
   ];
 
@@ -20,7 +19,6 @@
       {disabled}
       class:disabled
       on:click={() => {
-        console.log("button lcick send request");
         sendRequestAndAddChat({ text: prompt, isResponse: false });
       }}
     >
@@ -37,6 +35,10 @@
     line-height: 30px;
     text-align: center;
     cursor: pointer;
+    -webkit-user-select: text;
+    -moz-user-select: text;
+    -ms-user-select: text;
+    user-select: text;
   }
   .disabled {
     cursor: not-allowed;
